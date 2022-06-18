@@ -36,7 +36,11 @@
 
   <teleport to="#portal-modal">
     <template v-if="showModal">
-      <PortalModal :visibleModal="showModal" @close="showModal = false" :modalWidth="50">
+      <PortalModal
+        :visibleModal="showModal"
+        @close="showModal = false"
+        :modalWidth="50"
+      >
         <CollapsedColumn />
       </PortalModal>
     </template>

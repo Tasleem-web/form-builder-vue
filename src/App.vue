@@ -45,8 +45,11 @@ export default {
   border: 1px solid;
 }
 .merged-grid {
-  grid-template-columns: auto 80px;
-  display: grid;
+  display: flex;
+  justify-content: space-between;
+}
+.merged-grid > div:first-child {
+  width: 100%;
 }
 .flex {
   display: flex;

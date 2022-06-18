@@ -78,10 +78,8 @@ export default {
   },
   methods: {
     clickedMenu(event, componentName) {
-      console.log(componentName);
       this.selectedElement = componentName;
       this.showModal = true;
-      console.log(this.showModal);
     },
   },
 };

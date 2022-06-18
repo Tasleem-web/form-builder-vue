@@ -69,8 +69,7 @@ export default {
     PlusOutlined,
   },
 
-  setup(props) {
-    console.log({ props });
+  setup() {
     const areas = [
       {
         label: "Beijing",

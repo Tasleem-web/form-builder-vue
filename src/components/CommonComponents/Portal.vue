@@ -1,11 +1,14 @@
 <template>
   <div>
+    <!-- <pre>{{ JSON.stringify(setModalWidth) }}</pre> -->
     <a-modal
       v-model:visible="visible"
       title="Form Modal"
       @ok="handleOk"
-      width="70%"
+      :width="setModalWidth"
       @formValue="getFormData"
+      style="top: 20px"
+      :closable="false"
     >
       <slot></slot>
       <template #footer>
@@ -23,9 +26,12 @@ import { ref } from "vue";
 
 export default {
   name: "PortalModal",
-  props: ["visibleModal"],
+  props: ["visibleModal", "modalWidth"],
   setup(props, context) {
     const visible = ref(props.visibleModal);
+    let modalWidthCal = props.modalWidth ? props.modalWidth + "%" : "70%";
+    console.log(modalWidthCal);
+    const setModalWidth = ref(modalWidthCal);
 
     const handleOk = () => {
       visible.value = false;
@@ -46,6 +52,7 @@ export default {
 
     const handleCancel = () => {
       visible.value = false;
+      context.emit("close");
     };
 
     return {
@@ -53,6 +60,7 @@ export default {
       handleOk,
       showModal,
       handleCancel,
+      setModalWidth,
     };
   },
   methods: {

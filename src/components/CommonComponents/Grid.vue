@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <!-- <div>
     <label for="gridSize">Select Rows for Grid </label>
     <a-select
       v-model:value="gridSize"
@@ -14,7 +14,7 @@
       id="gridSize"
     ></a-select>
   </div>
-  <hr />
+  <hr /> -->
   <div>
     <!-- <template v-if="gridSize"> -->
       <CreateRowCol />
