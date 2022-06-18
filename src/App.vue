@@ -1,26 +1,57 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <HomeLayout />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HomeLayout from "./components/Layout.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    HomeLayout,
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.text-center {
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+.grid {
+  display: grid;
+  /* grid-column-gap: 20px; */
+  align-items: center;
+  border: 1px solid;
+}
+.grid-1 {
+  grid-template-columns: 1fr;
+}
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+.grid-5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+.grid > div.outerGrid:not(:last-child) {
+  border-bottom: 1px solid;
+}
+.inside {
+  border: 1px solid;
+}
+.merged-grid {
+  grid-template-columns: auto 80px;
+  display: grid;
+}
+.flex {
+  display: flex;
+}
+.align-center {
+  align-items: center;
 }
 </style>
