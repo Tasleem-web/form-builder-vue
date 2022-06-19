@@ -24,10 +24,10 @@
             v-model="gridSize"
             id="gridSize"
           ></a-select>
-          <!-- <template v-if="gridRowSize.length > 1">
-            <MinusCircleOutlined @click="removeRow(gridRow)" />
-          </template> -->
-          <a-button type="primary" @click="openModal">Merge Column</a-button>
+          <template v-if="gridRowSize.length > 1">
+            <!-- <MinusCircleOutlined @click="removeRow(gridRow)" /> -->
+            <a-button type="primary" @click="openModal">Merge Column</a-button>
+          </template>
         </div>
       </section>
     </div>
@@ -36,7 +36,11 @@
 
   <teleport to="#portal-modal">
     <template v-if="showModal">
-      <PortalModal :visibleModal="showModal" @close="showModal = false" :modalWidth="50">
+      <PortalModal
+        :visibleModal="showModal"
+        @close="showModal = false"
+        :modalWidth="50"
+      >
         <CollapsedColumn />
       </PortalModal>
     </template>

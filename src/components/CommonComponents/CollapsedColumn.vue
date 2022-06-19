@@ -1,4 +1,5 @@
 <template>
+  <pre>selectedColSize - {{ selectedColSize }}</pre>
   <a-form
     :model="formState"
     name="basic"
@@ -39,8 +40,16 @@ export default {
   components: {
     // UserOutlined,
   },
-  setup(props, ctx) {
-    console.log({ props, ctx });
+  props: ["selectedColSize"],
+  setup(props) {
+    console.log("props.selectedColSize", props.selectedColSize);
+    // let arr = [];
+    // if (props.selectedColSize) {
+    //   for (let i = 1; i <= props.selectedColSize; i++) {
+    //     arr.push({ value: i, label: i });
+    //   }
+    // }
+
     const options = ref([
       { value: "1", label: "1" },
       { value: "2", label: "2" },
@@ -48,6 +57,8 @@ export default {
       { value: "4", label: "4" },
       { value: "5", label: "5" },
     ]);
+
+    // const selectedColSizeProps = arr.length ? ref(arr) : options;
 
     const formState = reactive({
       from: null,
@@ -58,6 +69,7 @@ export default {
       from: ref(undefined),
       formState,
       options,
+      // selectedColSizeProps,
     };
   },
   methods: {
@@ -65,6 +77,9 @@ export default {
       //   this.eventBus.emit("InputText", this.formState);
     },
   },
+  // beforeUnmount() {
+  //   return (this.selectedColSizeProps = null);
+  // },
 };
 </script>
 <style scoped></style>
