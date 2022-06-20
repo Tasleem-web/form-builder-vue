@@ -9,6 +9,7 @@
       @formValue="getFormData"
       style="top: 20px"
       :closable="false"
+      :maskClosable="false"
     >
       <slot></slot>
       <template #footer>

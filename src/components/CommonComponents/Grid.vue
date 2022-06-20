@@ -17,18 +17,24 @@
   <hr /> -->
   <div>
     <!-- <template v-if="gridSize"> -->
-      <CreateRowCol />
+    <!-- <CreateRowCol /> -->
+    <DynamicGrid />
     <!-- </template> -->
+    <!-- <MyTest /> -->
   </div>
 </template>
 
 <script>
 import { ref } from "vue";
-import CreateRowCol from "./CreateRowCol.vue";
+// import CreateRowCol from "./CreateRowCol.vue";
+import DynamicGrid from "./DynamicGrid.vue";
+// import MyTest from "./Test.vue";
 export default {
   name: "GridLayout",
   components: {
-    CreateRowCol,
+    // CreateRowCol,
+    DynamicGrid,
+    // MyTest,
   },
   setup() {
     const options = ref([

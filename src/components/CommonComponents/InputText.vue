@@ -77,8 +77,7 @@ import { reactive, ref } from "vue";
 
 export default {
   name: "InputText",
-  setup(props, ctx) {
-    console.log({ props, ctx });
+  setup() {
     const options = ref([
       { value: "email", label: "Email" },
       { value: "number", label: "Number" },

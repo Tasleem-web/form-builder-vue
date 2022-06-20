@@ -1,5 +1,4 @@
 <template>
-  <pre>selectedColSize - {{ selectedColSize }}</pre>
   <a-form
     :model="formState"
     name="basic"
@@ -16,7 +15,8 @@
       <a-select
         v-model:value="formState.from"
         placeholder="Select from"
-        :options="options"
+        :options="selectedColSizePropsTo"
+        @change="handleChange('from')"
       ></a-select>
     </a-form-item>
     <a-form-item
@@ -27,7 +27,8 @@
       <a-select
         v-model:value="formState.to"
         placeholder="To"
-        :options="options"
+        :options="selectedColSizePropsFrom"
+        @change="handleChange('to')"
       ></a-select>
     </a-form-item>
   </a-form>
@@ -35,20 +36,22 @@
 <script>
 import { reactive, ref } from "vue";
 // import { UserOutlined } from "@ant-design/icons-vue";
+import DeepCopy from "../Common.js";
 export default {
   name: "CollapsedColumn",
   components: {
     // UserOutlined,
   },
   props: ["selectedColSize"],
-  setup(props) {
-    console.log("props.selectedColSize", props.selectedColSize);
-    // let arr = [];
-    // if (props.selectedColSize) {
-    //   for (let i = 1; i <= props.selectedColSize; i++) {
-    //     arr.push({ value: i, label: i });
-    //   }
-    // }
+  emits: ["mergeRangeCol"],
+  setup(props, context) {
+    let arr = [];
+
+    if (props.selectedColSize.additional.length) {
+      for (let i = 1; i <= props.selectedColSize.additional.length; i++) {
+        arr.push({ value: i, label: i });
+      }
+    }
 
     const options = ref([
       { value: "1", label: "1" },
@@ -58,18 +61,29 @@ export default {
       { value: "5", label: "5" },
     ]);
 
-    // const selectedColSizeProps = arr.length ? ref(arr) : options;
+    const selectedColSizePropsFrom = arr.length ? ref(arr) : options;
+    let updateArr = DeepCopy?.deepCopy(arr);
+    updateArr.splice(arr.length - 1, 1);
+    const selectedColSizePropsTo = updateArr;
 
     const formState = reactive({
       from: null,
       to: null,
+      item: props.selectedColSize.item,
     });
 
+    const handleChange = (name, value) => {
+      console.log({ name, value });
+      context.emit("mergeRangeCol", formState);
+    };
+
     return {
-      from: ref(undefined),
+      // from: ref(undefined),
       formState,
       options,
-      // selectedColSizeProps,
+      selectedColSizePropsFrom,
+      selectedColSizePropsTo,
+      handleChange,
     };
   },
   methods: {
@@ -77,8 +91,13 @@ export default {
       //   this.eventBus.emit("InputText", this.formState);
     },
   },
-  // beforeUnmount() {
-  //   return (this.selectedColSizeProps = null);
+  // watch: {
+  //   formState: {
+  //     handler(newValue) {
+  //       this.$emit("mergeRangeCol", newValue);
+  //     },
+  //     deep: true,
+  //   },
   // },
 };
 </script>
