@@ -31,7 +31,6 @@ export default {
   setup(props, context) {
     const visible = ref(props.visibleModal);
     let modalWidthCal = props.modalWidth ? props.modalWidth + "%" : "70%";
-    console.log(modalWidthCal);
     const setModalWidth = ref(modalWidthCal);
 
     const handleOk = () => {

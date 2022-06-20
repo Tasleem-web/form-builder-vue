@@ -72,8 +72,7 @@ export default {
       item: props.selectedColSize.item,
     });
 
-    const handleChange = (name, value) => {
-      console.log({ name, value });
+    const handleChange = () => {
       context.emit("mergeRangeCol", formState);
     };
 

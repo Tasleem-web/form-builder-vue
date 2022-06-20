@@ -176,19 +176,20 @@ export default {
       this.showModal = true;
     },
     getMergeColValue(value) {
-      console.log({ value });
       if (value.from && value.to) {
-        let updateSections = this.sections.find((item) => {
-          console.log({ item });
-          return item.item == value.item;
-        });
-        console.log(this.sections[--updateSections.item].from);
-        this.sections[--updateSections.item].from = updateSections.from;
-        console.log("this.sections", this.sections);
-        // this.sections[--updateSections.item].to = updateSections.to;
+        let updateSections = this.sections.find(
+          (item) => item.item == value.item
+        );
+        let getIndexFromSections = --updateSections.item;
+        this.sections[getIndexFromSections].from = value.from;
+        this.sections[getIndexFromSections].to = value.to;
+        console.log(this.sections);
 
         // console.log("this.sections", this.sections[--value.item]);
-        // this.sections[--value.item].additional.splice(1, value.to - value.from);
+        this.sections[getIndexFromSections].additional.splice(
+          1,
+          value.to - value.from
+        );
       }
     },
   },
