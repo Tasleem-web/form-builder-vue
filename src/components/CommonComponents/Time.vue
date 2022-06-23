@@ -1,10 +1,10 @@
 <template>
-  <div>InputText</div>
+  <div>TimePicker</div>
 </template>
 
 <script>
 export default {
-  name: "InputText",
+  name: "TimePicker",
 };
 </script>
 

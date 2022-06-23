@@ -1,0 +1,11 @@
+{
+    "type": "date",
+    "name": "billingFrom",
+    "label": "Billing From",
+    "value": "",
+    "required": true,
+    "disabled": false,
+    "className": "",
+    "dateFormat": "YYYY-MM-dd",
+    "placeholder": "Please Select Billing From"
+}

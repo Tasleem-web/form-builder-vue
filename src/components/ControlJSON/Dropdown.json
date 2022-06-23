@@ -1,0 +1,34 @@
+{
+    "type": "dropdown",
+    "name": "country",
+    "label": "Country",
+    "value": "",
+    "required": true,
+    "className": "",
+    "multiSelect": false,
+    "disabled": false,
+    "isServiceCalled": true,
+    "changeFieldData": [
+        "operationType"
+    ],
+    "apiUrl": "operationcode.json",
+    "options": [
+        {
+            "code": "in",
+            "name": "India"
+        },
+        {
+            "code": "us",
+            "name": "USA"
+        },
+        {
+            "code": "ch",
+            "name": "China"
+        },
+        {
+            "code": "sd",
+            "name": "Saudi"
+        }
+    ],
+    "placeholder": "Please Select Country"
+}

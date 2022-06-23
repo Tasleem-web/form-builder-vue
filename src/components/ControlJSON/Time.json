@@ -1,0 +1,11 @@
+{
+    "type": "time",
+    "name": "executeTime",
+    "label": "Execute/Start Time(UTC)",
+    "value": null,
+    "required": true,
+    "disabled": false,
+    "className": "",
+    "timeFormat": "hh:mm:ss a",
+    "placeholder": "Please select Execute/Start Time(UTC)"
+}

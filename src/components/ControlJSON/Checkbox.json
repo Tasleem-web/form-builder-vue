@@ -1,0 +1,24 @@
+{
+    "type": "checkbox",
+    "name": "templateType",
+    "label": "",
+    "required": true,
+    "value": "",
+    "flexDirection": "column",
+    "gridColumn": "1 / span 3",
+    "options": [
+        {
+            "key": "billingType",
+            "label": "Billing Type"
+        },
+        {
+            "key": "routineType",
+            "label": "Routine Type"
+        },
+        {
+            "key": "both",
+            "label": "Both"
+        }
+    ],
+    "placeholder": "Please Select one type"
+}

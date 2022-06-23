@@ -1,10 +1,10 @@
 <template>
-  <div>InputText</div>
+  <div>DropDown</div>
 </template>
 
 <script>
 export default {
-  name: "InputText",
+  name: "DropDown",
 };
 </script>
 

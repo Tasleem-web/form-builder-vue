@@ -1,0 +1,20 @@
+{
+    "type": "radio",
+    "name": "selectTemplate",
+    "label": "Select Template",
+    "value": "billing",
+    "required": true,
+    "className": "gender-className",
+    "gridColumn": "50%",
+    "options": [
+        {
+            "key": "billing",
+            "label": "Billing"
+        },
+        {
+            "key": "routine",
+            "label": "Routine"
+        }
+    ],
+    "placeholder": "Select Template"
+}

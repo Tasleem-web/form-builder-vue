@@ -4,10 +4,10 @@
     <a-layout-sider>
       <div class="logo" />
       <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
-        <template v-for="menu in menuItems" :key="menu.id">
-          <a-menu-item @click="clickedMenu($event, menu.elementName)">
+        <template v-for="(menuObj, index) in menuItems" :key="menuObj.id">
+          <a-menu-item @click="clickedMenu($event, menuObj, index)">
             <pie-chart-outlined />
-            <span>{{ menu.name }}</span>
+            <span>{{ menuObj.label }}</span>
           </a-menu-item>
         </template>
       </a-menu>
@@ -23,7 +23,9 @@
         <div
           :style="{ padding: '24px', background: '#fff', minHeight: '360px' }"
         >
-          <GridLayout />
+          <!-- <GridLayout /> -->
+          <!-- <MyDashboard :selectedControl="selectedControl" /> -->
+          <TestDemo />
         </div>
       </a-layout-content>
       <a-layout-footer style="text-align: center">
@@ -31,15 +33,15 @@
       </a-layout-footer>
     </a-layout>
   </a-layout>
-  <teleport to="#portal-modal">
+  <!-- <teleport to="#portal-modal">
     <template v-if="showModal">
       <PortalModal :visibleModal="showModal" @close="showModal = false">
-        <template v-if="selectedElement == 'textBox'">
+        <template v-if="selectedControl == 'textBox'">
           <InputText />
         </template>
       </PortalModal>
     </template>
-  </teleport>
+  </teleport> -->
 </template>
 <script>
 import {
@@ -51,9 +53,9 @@ import {
 } from "@ant-design/icons-vue";
 import { ref } from "vue";
 import menus from "../assets/menu.json";
-import PortalModal from "./CommonComponents/Portal.vue";
-import InputText from "./CommonComponents/InputText.vue";
-import GridLayout from "./CommonComponents/Grid.vue";
+// import PortalModal from "./CommonComponents/Portal.vue";
+// import MyDashboard from "./CommonComponents/Dashboard.vue";
+import TestDemo from "./CommonComponents/TestDemo.vue";
 
 export default {
   name: "HomeLayout",
@@ -63,23 +65,28 @@ export default {
     // UserOutlined,
     // TeamOutlined,
     // FileOutlined,
-    PortalModal,
-    InputText,
-    GridLayout,
+    // PortalModal,
+    // MyDashboard,
+    TestDemo,
   },
   data() {
     return {
       collapsed: ref(false),
       selectedKeys: ref(["1"]),
       menuItems: menus,
-      selectedElement: null,
+      selectedControl: null,
       showModal: false,
+      controls: [
+        { label: "Text Field", type: "inputField" },
+        { label: "Text Area", type: "textArea" },
+      ],
     };
   },
   methods: {
-    clickedMenu(event, componentName) {
-      this.selectedElement = componentName;
-      this.showModal = true;
+    clickedMenu(event, ControlObj) {
+      let newObj = ControlObj;
+      newObj.key = "id-" + new Date().getTime();
+      this.selectedControl = newObj;
     },
   },
 };

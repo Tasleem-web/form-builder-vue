@@ -1,10 +1,10 @@
 <template>
-  <div>InputText</div>
+  <div>Checkbox</div>
 </template>
 
 <script>
 export default {
-  name: "InputText",
+  name: "Checkbox",
 };
 </script>
 

@@ -1,0 +1,11 @@
+{
+    "type": "text",
+    "name": "jobName",
+    "label": "Job Name",
+    "value": "",
+    "required": true,
+    "className": "",
+    "gridColumn": "",
+    "disabled": false,
+    "placeholder": "Please enter Job Name"
+}

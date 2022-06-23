@@ -1,21 +1,32 @@
 <template>
-  <HomeLayout />
+  <TestDemo />
 </template>
 
 <script>
-import HomeLayout from "./components/Layout.vue";
+// import HomeLayout from "./components/Layout.vue";
+import TestDemo from "./components/CommonComponents/TestDemo.vue";
 
 export default {
   name: "App",
   components: {
-    HomeLayout,
+    // HomeLayout,
+    TestDemo,
   },
 };
 </script>
 
 <style>
+.flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .text-center {
   text-align: center;
+}
+.d-flex {
+  display: flex;
 }
 .grid {
   display: grid;

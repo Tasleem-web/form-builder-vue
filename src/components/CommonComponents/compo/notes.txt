@@ -1,0 +1,2 @@
+layout -> modal -> 
+https://www.netlify.com/blog/understanding-defineprops-and-defineemits-in-vue-3.2/

@@ -1,12 +1,12 @@
 [
     {
-        "id": 1,
-        "name": "Text Input",
-        "elementName": "textBox"
+        "label": "Text Field",
+        "type": "text",
+        "value": ""
     },
     {
-        "id": 2,
-        "name": "Button",
-        "elementName": "button"
+        "label": "Button",
+        "type": "button",
+        "value": ""
     }
 ]

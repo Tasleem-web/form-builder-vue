@@ -1,0 +1,22 @@
+{
+    "type": "button",
+    "name": "buttons",
+    "label": "",
+    "className": "d-flex",
+    "gridColumn": "1 / span 3",
+    "justifyContent": "end",
+    "buttons": [
+        {
+            "name": "Cancel",
+            "label": "",
+            "disabled": false,
+            "onClickButton": ""
+        },
+        {
+            "name": "Save",
+            "label": "",
+            "disabled": true,
+            "onClickButton": ""
+        }
+    ]
+}

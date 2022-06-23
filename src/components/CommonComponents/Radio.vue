@@ -1,10 +1,10 @@
 <template>
-  <div>InputText</div>
+  <div>RadioButton</div>
 </template>
 
 <script>
 export default {
-  name: "InputText",
+  name: "RadioButton",
 };
 </script>
 
