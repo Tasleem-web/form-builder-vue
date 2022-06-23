@@ -30,7 +30,10 @@
                   type="text"
                   class="form-control"
                 />
-                <span style="font-size: 20px; cursor: pointer">
+                <span
+                  style="font-size: 20px; cursor: pointer"
+                  @click="openModal"
+                >
                   <EditOutlined />
                 </span>
               </div>
@@ -53,11 +56,13 @@
         :visibleModal="showModal"
         @close="showModal = false"
         :modalWidth="50"
+        :selectedControl="selectedControl"
+        @getAllData="getAllData"
       >
-        <!-- <template v-if="">
-
-        </template> -->
-        <CollapsedColumn />
+        <template v-if="selectedControl?.type == 'text'">
+          <InputText :selectedControl="selectedControl" />
+        </template>
+        <!-- <CollapsedColumn /> -->
       </PortalModal>
     </template>
   </teleport>
@@ -67,12 +72,17 @@
 // import { ref } from "@vue/reactivity";
 import menus from "../../assets/menu.json";
 import { EditOutlined } from "@ant-design/icons-vue";
+import DeepCopy from "../Common.js";
+import InputText from "./InputText.vue";
+import PortalModal from "./Portal.vue";
 
 export default {
   name: "TestDemo",
   // props: ["selectedControl"],
   components: {
     EditOutlined,
+    InputText,
+    PortalModal,
   },
 
   data() {
@@ -80,12 +90,16 @@ export default {
       ControlNames: [],
       widthStyle: "250",
       menuItems: menus,
+      selectedControl: null,
+      showModal: false,
     };
   },
   methods: {
     addControlName(event, obj) {
-      console.log({ obj });
-      this.ControlNames.push(JSON.parse(JSON.stringify(obj)));
+      obj.id = "id-" + new Date().getTime();
+      let deepCopy = DeepCopy.deepCopy(obj);
+      this.ControlNames.push(deepCopy);
+      this.selectedControl = deepCopy;
     },
     addWidth() {
       this.widthStyle = "250";
@@ -94,32 +108,19 @@ export default {
       this.widthStyle = "0";
     },
 
-    addExperience() {
-      this.workExperiences.push({
-        company: "",
-      });
-    },
-
     submit() {
       const data = {
         ControlNames: this.ControlNames,
       };
       alert(JSON.stringify(data, null, 2));
     },
-
-    // submit() {
-    //   const data = {
-    //     ControlNames: this.ControlNames,
-    //   };
-    //   alert(JSON.stringify(data, null, 2));
-    // },
+    openModal() {
+      this.showModal = true;
+    },
+    getAllData(values) {
+      console.log({ values });
+    },
   },
-  // created() {
-  //   if (this.selectedControl && Object.keys(this.selectedControl).length) {
-  //     console.log("selectedControl: ", this.selectedControl);
-  //     this.ControlNames.push(this.selectedControl);
-  //   }
-  // },
 };
 </script>
 

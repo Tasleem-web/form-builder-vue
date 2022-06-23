@@ -3,7 +3,7 @@
     <!-- <pre>{{ JSON.stringify(setModalWidth) }}</pre> -->
     <a-modal
       v-model:visible="visible"
-      title="Form Modal"
+      :title="`${selectedControl?.label} - Configurations`"
       @ok="handleOk"
       :width="setModalWidth"
       @formValue="getFormData"
@@ -14,7 +14,11 @@
       <slot></slot>
       <template #footer>
         <a-button key="back" @click="handleCancel">Cancel</a-button>
-        <a-button key="submit" type="primary" @click="handleOk"
+        <a-button
+          key="submit"
+          type="primary"
+          @click="handleOk"
+          :disabled="isValidForm"
           >Submit</a-button
         >
       </template>
@@ -27,7 +31,12 @@ import { ref } from "vue";
 
 export default {
   name: "PortalModal",
-  props: ["visibleModal", "modalWidth"],
+  props: { visibleModal: Boolean, modalWidth: Number, selectedControl: Object },
+  data() {
+    return {
+      isValidForm: true,
+    };
+  },
   setup(props, context) {
     const visible = ref(props.visibleModal);
     let modalWidthCal = props.modalWidth ? props.modalWidth + "%" : "70%";
@@ -41,14 +50,6 @@ export default {
     const showModal = () => {
       visible.value = true;
     };
-
-    // const handleOk = () => {
-    //   loading.value = true;
-    //   setTimeout(() => {
-    //     loading.value = false;
-    //     visible.value = false;
-    //   }, 2000);
-    // };
 
     const handleCancel = () => {
       visible.value = false;
@@ -70,7 +71,9 @@ export default {
   },
   mounted() {
     this.eventBus.on("InputText", (args) => {
-      console.log(args);
+      // console.log(args);
+      this.isValidForm = args?.formStatus;
+      this.$emit("getAllData", args);
     });
   },
 };
